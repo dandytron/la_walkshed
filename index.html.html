@@ -1,0 +1,390 @@
+<!-- The originial version of this template was made by Johnathan Soma and then messed with and customized by Aaron Reiss -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+
+      html, body {
+          margin: 0;
+          padding: 0;
+          font-family: 'Arial', sans-serif; /* Clean sans-serif font */
+          line-height: 1.6;
+          background-color: #f9f9f9; /* Light background for better readability */
+          color: #333; /* Dark gray for text */
+      }
+
+      h1 {
+        max-width: 50%;
+        margin: 4rem auto 2rem auto;
+        font-size: 2.5rem; /* Large font size for standout title */
+        font-weight: 700; /* Bold for emphasis */
+        text-align: center; /* Center the headline */
+        color: #222; /* Slightly darker gray for the title */
+      }
+
+      p {
+        max-width: 50%;
+        margin: 0 auto 2rem auto;
+        font-size: 1rem; /* Natural font size for readability */
+        font-family: 'Verdana', sans-serif; /* Clean sans-serif font */
+        color: #444; /* Medium gray for body text */
+        line-height: 1.6; /* Natural line spacing */
+        text-align: left; /* Left-align for natural flow */
+      }
+
+      ol, ul {
+          max-width: 50%;
+          margin: 0 auto 2rem auto; /* Center align to match paragraph width */
+          padding-left: 1.5rem; /* Indent list items slightly */
+          font-family: 'Verdana', sans-serif; /* Match paragraph font */
+          color: #444; /* Same medium gray as body text */
+          font-size: 1rem; /* Match paragraph font size */
+          line-height: 1.6; /* Match paragraph line spacing */
+          text-align: left; /* Ensure alignment is consistent with paragraphs */
+      }
+
+      /* Styling for list items */
+      li {
+          margin-bottom: 0.5rem; /* Add spacing between list items */
+      }
+
+      .emphasis-quote {
+        max-width: 50%;
+        font-family: sans-serif;
+        margin: 2rem auto;
+        font-size: 19px;
+        line-height: 1.8;
+        font-style: italic;
+        color: #444; /* Slightly lighter gray for distinction */
+        border-left: 4px solid #888; /* Adds a vertical line for emphasis */
+        padding-left: 1rem;
+      }
+
+      .emphasis-quote a {
+          color: #0066cc; /* Blue link color */
+          text-decoration: none;
+          font-weight: bold;
+      }
+
+      .emphasis-quote a:hover {
+          text-decoration: underline;
+      }
+      
+      #scrolly {
+        position: relative;
+        padding: 1rem;
+      }
+
+      .scrolly-overlay {
+        position: relative;
+        padding: 0;
+        max-width: 35rem;
+        margin-left: 2px;
+        margin-right: auto;
+      }
+
+      .sticky-thing {
+        position: -webkit-sticky;
+        position: sticky;
+        left: 0;
+        width: 100%;
+        margin: 0;
+        z-index: 0;
+        top: 0;
+        height: 100vh;
+        /* Center everything inside */
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        justify-content: center;
+      }
+
+      .step {
+        margin: 0 auto 2rem auto;
+        margin-bottom: 40rem;
+        background-color: #eee;
+        background-color: #fff;
+        color: black;
+        text-align: center;
+      }
+
+      .step p {
+        padding: 1rem;
+        font-size: 1.25rem;
+        border: black;
+      }
+
+      .photoDiv {
+        width: 49%;
+        margin-right: 0px;
+        margin-left: auto;
+        display: block;
+      }
+
+      .hidden { visibility: hidden; }
+
+      /* When it's less than 700 pixels wide, do normal scrollytelling */
+      @media only screen and (min-width: 700px) {
+        #scrolly.side-by-side {
+          display: flex;
+        }
+
+        #scrolly.side-by-side > div {
+          flex-basis: 0;
+          flex-grow: 1;
+          flex-shrink: 1;
+          padding: 0.75em;
+        }
+
+        #scrolly.side-by-side .scrolly-overlay {
+          margin-top: 70vh;
+          order: 0;
+          /* Change these to adjust sizing options */
+          min-width: 15rem;
+          max-width: 20rem;
+        }
+
+        #scrolly.side-by-side .sticky-thing {
+          order: 1;
+          flex-grow: 2;
+        }
+      }
+    </style>
+	<script src="https://unpkg.com/intersection-observer@0.5.1/intersection-observer.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/scrollama/3.0.4/scrollama.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.3.0/d3.min.js"></script>
+	
+  </head>
+
+  <body>
+	<h1>Do I really, really need a car in Los Angeles?</h1>
+
+  <p>We are moving to Los Angeles, and any time I think about it, my mind conjures up:<br></p>
+
+  <ol>
+      <li>The scene of people dancing on a twisting freeway junction in <em>La La Land</em></li>
+      <li>The fuzzy, choking traffic Michael Douglas carved through in 
+          <a href="https://lataco.com/setting-path-across-l-unhinged-antihero-falling" target="_blank"><em>Falling Down</em></a>
+      </li>
+      <li>The orange horizon of infinite sprawl I saw from an airplane window as we visited the city last December<br></li>
+  </ol>
+
+  <p>We are coming from Hong Kong, which consistently ranks among the best public transport systems in the world. It’s so good, 
+    people who live in Hong Kong island or Kowloon often find a 30-minute trip intolerable on most days.<br></p>
+  <p>So, on top of dreading the culture shock of returning home after more than a decade away, on top of facing the prospect of 
+    being responsible for a car for the first time since I was in college, I am grappling with setting up camp in the middle of a 
+    vast place that by all appearances cannot function without private vehicles, like, at all.<br></p>
+  <p>But is it really that bad? Well, lets take a look, because by this measure, it can seem like you’d be just fine without a car:<br></p>
+  
+
+  
+      <section id="scrolly">
+        <div class="sticky-thing">
+<!-- Sticky Thing 1 goes below this line -->
+
+<img id="scrollyPhoto" class="photoDiv" src="images/LA_1.png">
+
+<!-- Sticky Thing 1 goes above this line -->
+
+        </div>
+
+        <div class="scrolly-overlay">
+          <div class="step" id="step1">
+            <p>This is an outline of the Los Angeles Metro system. There are four light rail lines and two rapid transit lines. 
+              There’s also the MetroLink commuter rail system, but we’re excluding that for <em>reasons.</em></p>
+          </div>
+          <div class="step" id="step2">
+            <p>The green here represents a ‘walkshed’ of intracity public transport. That green blob is everywhere within 15 minutes of a stop. But its much more extensive than the Metro lines…</p>
+          </div>
+          <div class="step" id="step3">
+            <p>…and that’s because of this spiderweb of red: the Los Angeles Metro Busway.</p>
+          </div>
+          <div class="step" id="step4">
+            <p>The red here is beyond a fifteen minute walk, according to an algorithm run along walkable roads and pedestrian pathways from each stop.</p>
+          </div>
+          <div class="step" id="step5">
+            <p>Leaving this much red just out of reach within the boundary of Los Angeles County. 
+              It looks particularly bad in patches in the south, stretches of the coastline, and hills that frame the northern side of the city</p>
+          </div>
+        </div>
+      </section>
+
+      <p>
+        That’s all just one part of the story, however. Ridership of these systems is not that high. While ridership saw an increase last year, 
+        it was more or less a return to 
+        <a href="https://www.metro.net/about/la-metros-2024-ridership-soars-to-more-than-311-million-marking-significant-growth/" target="_blank">pre-COVID levels</a>.
+      </p>
+      <p>And unlike in Hong Kong – where during most operation hours, trains on Hong Kong island arrive every three minutes – the LA Metro is 
+        infrequent and slow. <a href="https://www.youtube.com/watch?v=Zcm5nsc1XvU" target="_blank">This recent 
+          Wall Street Journal video (which has some very snazzy graphics of the train lines)</a> argues that in ideal 
+          traffic conditions it can take four times longer to get to your destination than driving.  </p>
+      <p>And to top it all off, Hong Kong has an incredible airport train. From touchdown to front door, I’ve had days where I’m back home in less 
+        than an hour. LA’s trains? They don’t even connect to the airport, surprisingly, <a href="https://calmatters.org/commentary/2025/04/train-metro-los-angeles-airport/" 
+        target="_blank"> though they say that will change. Maybe.</a></p>
+      <p>As to the why of all this? That’s an entirely different story.</p>
+
+      <blockquote class="emphasis-quote">
+        “I don't know, could've been a lame jogger maybe<br>
+        Or someone just about to do the freeway strangler, baby<br>
+        Shopping cart pusher, maybe someone groovy<br>
+        One thing's for sure, he isn't starring in the movies<br>
+        'Cause he's walkin' in L.A.<br>
+        Walkin' in L.A., nobody walks in L.A.<br>
+        Walkin' in L.A.<br>
+        Walkin' in L.A., only a nobody walks in L.A.”
+        <br><br>
+        - <a href="https://www.youtube.com/watch?v=eQF7FDeUePA" target="_blank">Missing Persons – ‘Walking In L.A.’</a>
+      </blockquote>
+    <script>
+
+      
+    /* Scrollytelling code goes under here */
+
+      // Code for the Photo Div #1 (aka #scrollyPhoto1)
+        
+        // Entering Step One
+      d3.select("#step1").on('stepin',function(e) {
+        console.log("We've arrived at STEP ONE in the photo div")
+        d3.select("#scrollyPhoto").attr("src", "images/LA_1.png");
+      })
+
+        // Entering Step Two
+        d3.select("#step2").on('stepin',function(e) {
+        console.log("We've arrived at STEP TWO in the photo div")
+        d3.select("#scrollyPhoto").attr("src", "images/LA_2.png");
+      })
+
+       // Entering Step Three
+       d3.select("#step3").on('stepin',function(e) {
+        console.log("We've arrived at STEP Three in the photo div")
+        d3.select("#scrollyPhoto").attr("src", "images/LA_3.png");
+      })
+
+       // Entering Step Four
+       d3.select("#step4").on('stepin',function(e) {
+        console.log("We've arrived at STEP Three in the photo div")
+        d3.select("#scrollyPhoto").attr("src", "images/LA_4.png");
+      })
+
+       // Entering Step Five
+       d3.select("#step5").on('stepin',function(e) {
+        console.log("We've arrived at STEP Three in the photo div")
+        d3.select("#scrollyPhoto").attr("src", "images/LA_5.png");
+      })
+
+       // Entering Step Six
+       d3.select("#step6").on('stepin',function(e) {
+        console.log("We've arrived at STEP Three in the photo div")
+        d3.select("#scrollyPhoto").attr("src", "images/LA_6.png");
+      })
+
+       // Entering Step Seven
+       d3.select("#step7").on('stepin',function(e) {
+        console.log("We've arrived at STEP Three in the photo div")
+        d3.select("#scrollyPhoto").attr("src", "images/LA_7.png");
+      })
+
+    </script>
+
+<script>
+    const scroller = scrollama();
+
+	scroller
+		.setup({
+			step: "#scrolly .scrolly-overlay .step",
+			offset: 0.5,
+			debug: false
+		})
+		.onStepEnter(function({ element, index, direction}) {
+			const event = new CustomEvent('stepin', { detail: { direction: direction } })
+			element.dispatchEvent(event);
+		})
+		.onStepExit(function({ element, index, direction }) {
+			const event = new CustomEvent('stepout', { detail: { direction: direction } })
+			element.dispatchEvent(event);
+		});
+
+	window.addEventListener("resize", scroller.resize);
+    </script>
+
+
+    <!-- ai2html resizer script -->
+
+<script type="text/javascript">
+  (function() {
+      // only want one resizer on the page
+      if (document.documentElement.className.indexOf("g-resizer-v3-init") > -1) return;
+      document.documentElement.className += " g-resizer-v3-init";
+      // require IE9+
+      if (!("querySelector" in document)) return;
+      function resizer() {
+          var elements = Array.prototype.slice.call(document.querySelectorAll(".g-artboard[data-min-width]")),
+              widthById = {};
+          elements.forEach(function(el) {
+              var parent = el.parentNode,
+                  width = widthById[parent.id] || parent.getBoundingClientRect().width,
+                  minwidth = el.getAttribute("data-min-width"),
+                  maxwidth = el.getAttribute("data-max-width");
+              widthById[parent.id] = width;
+
+              if (+minwidth <= width && (+maxwidth >= width || maxwidth === null)) {
+                  el.style.display = "block";
+              } else {
+                  el.style.display = "none";
+              }
+          });
+          try {
+              if (window.parent && window.parent.$) {
+                  window.parent.$("body").trigger("resizedcontent", [window]);
+              }
+              if (window.require) {
+                  require(['foundation/main'], function() {
+                      require(['shared/interactive/instances/app-communicator'], function(AppCommunicator) {
+                          AppCommunicator.triggerResize();
+                      });
+                  });
+              }
+          } catch(e) { console.log(e); }
+      }
+
+      document.addEventListener('DOMContentLoaded', resizer);
+      // feel free to replace throttle with _.throttle, if available
+      window.addEventListener('resize', throttle(resizer, 200));        
+
+      function throttle(func, wait) {
+          // from underscore.js
+          var _now = Date.now || function() { return new Date().getTime(); },
+              context, args, result, timeout = null, previous = 0;
+          var later = function() {
+              previous = _now();
+              timeout = null;
+              result = func.apply(context, args);
+              if (!timeout) context = args = null;
+          };
+          return function() {
+              var now = _now(), remaining = wait - (now - previous);
+              context = this;
+              args = arguments;
+              if (remaining <= 0 || remaining > wait) {
+                  if (timeout) {
+                      clearTimeout(timeout);
+                      timeout = null;
+                  }
+                  previous = now;
+                  result = func.apply(context, args);
+                  if (!timeout) context = args = null;
+              } else if (!timeout && options.trailing !== false) {
+                  timeout = setTimeout(later, remaining);
+              }
+              return result;
+          };
+      }
+
+     
+  })();
+</script>
+
+  </body>
+</html>
